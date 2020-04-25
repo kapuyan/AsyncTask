@@ -6,12 +6,12 @@ import java.lang.ref.WeakReference
 import java.util.*
 
 
-class SimpleAsyncTask: AsyncTask<Void, Void, String>() {
+class SimpleAsyncTask(mTextView: TextView?) : AsyncTask<Void, Void, String>() {
     private var mTextView: WeakReference<TextView>? = null
 
 
     fun SimpleAsyncTask(tv: TextView) {
-        mTextView = WeakReference(tv)
+        this@SimpleAsyncTask.mTextView = WeakReference(tv)
     }
 
     override fun doInBackground(vararg voids: Void?): String? {
