@@ -6,13 +6,15 @@ import java.lang.ref.WeakReference
 import java.util.*
 
 
-class SimpleAsyncTask(mTextView: TextView?) : AsyncTask<Void, Void, String>() {
+class SimpleAsyncTask internal constructor(tv: TextView) :
+    AsyncTask<Void?, Void?, String>() {
     private var mTextView: WeakReference<TextView>? = null
 
-
-    fun SimpleAsyncTask(tv: TextView) {
-        this@SimpleAsyncTask.mTextView = WeakReference(tv)
+    init {
+        mTextView = WeakReference(tv)
     }
+
+
 
     override fun doInBackground(vararg voids: Void?): String? {
        //generates a random value from 0 to 10
@@ -33,6 +35,7 @@ class SimpleAsyncTask(mTextView: TextView?) : AsyncTask<Void, Void, String>() {
     }
 
     override fun onPostExecute(result: String?) {
-        mTextView!!.get()!!.text = result
+        mTextView?.get()!!.text = result
+
     }
 }

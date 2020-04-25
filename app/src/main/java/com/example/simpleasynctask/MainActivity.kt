@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
 
     fun startTask(view: View) {
         mTextView!!.setText(R.string.napping)
-        SimpleAsyncTask(mTextView).execute()
+        SimpleAsyncTask(mTextView!!).execute()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
